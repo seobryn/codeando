@@ -1,4 +1,7 @@
 import styles from "./LeftBar.module.css"
+import { JSIcon } from "../Icons/javascript"
+import { CSSIcon } from "../Icons/css"
+import { HtmlIcon } from "../Icons/html"
 
 /**
  *
@@ -19,7 +22,7 @@ export function LeftBar({ openFile, selectedFile }) {
           role="button"
           onClick={() => openFile("javascript")}
         >
-          {selectedFile === "javascript" ? "📂" : "📁"} main.js
+          <JSIcon className={styles.icon} /> main.js
         </li>
         <li
           className={[
@@ -31,7 +34,7 @@ export function LeftBar({ openFile, selectedFile }) {
           role="button"
           onClick={() => openFile("html")}
         >
-          {selectedFile === "html" ? "📂" : "📁"} index.html
+          <HtmlIcon className={styles.icon} /> index.html
         </li>
         <li
           className={[
@@ -43,7 +46,7 @@ export function LeftBar({ openFile, selectedFile }) {
           role="button"
           onClick={() => openFile("css")}
         >
-          {selectedFile === "css" ? "📂" : "📁"} style.css
+          <CSSIcon className={styles.icon} /> style.css
         </li>
       </ul>
     </section>

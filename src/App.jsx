@@ -5,6 +5,8 @@ import { useState } from "react"
 import { Header } from "./components/Header"
 import { Preview } from "./components/Preview"
 import { defaultCSS, defaultHTML, defaultJS } from "./constants"
+import { DonationCompleted } from "./components/DonationCompleted"
+import { useEffect } from "react"
 
 const files = {
   javascript: "javascript",
@@ -17,6 +19,28 @@ function App() {
   const [html, setHTML] = useState(defaultHTML)
   const [css, setCSS] = useState(defaultCSS)
   const [js, setJS] = useState(defaultJS)
+
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const donationStatus = params.get("donation")
+    if (donationStatus === "completed") {
+      setIsModalOpen(true)
+      params.delete("donation")
+      history.replaceState(
+        {},
+        document.title,
+        `${location.origin}${params.size !== 0 ? "?" + params.toString() : ""}`.trimEnd(),
+      )
+    } else if (donationStatus) {
+      history.replaceState({}, document.title, location.origin)
+    }
+  }, [])
+
+  const onCloseModal = () => {
+    setIsModalOpen(false)
+  }
 
   const onOpenFile = (fileType) => {
     setCurrentFile(files[fileType])
@@ -81,6 +105,7 @@ function App() {
           onChange={onChangeValue}
         />
         <Preview content={getGeneratedHTML()} />
+        {isModalOpen && <DonationCompleted onCloseModal={onCloseModal} />}
       </div>
     </>
   )
