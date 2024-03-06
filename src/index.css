@@ -14,3 +14,12 @@ body {
   flex-direction: column;
   height: 100%;
 }
+
+.donate-container {
+  margin-left: auto;
+  width: 200px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+}
