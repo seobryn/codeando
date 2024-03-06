@@ -4,6 +4,7 @@ import { LeftBar } from "./components/LeftBar"
 import { useState } from "react"
 import { Header } from "./components/Header"
 import { Preview } from "./components/Preview"
+import { defaultCSS, defaultHTML, defaultJS } from "./constants"
 
 const files = {
   javascript: "javascript",
@@ -13,9 +14,9 @@ const files = {
 
 function App() {
   const [currentFile, setCurrentFile] = useState(files.html)
-  const [html, setHTML] = useState("<h1>Hello World</h1>")
-  const [css, setCSS] = useState("/* Put your CSS here */")
-  const [js, setJS] = useState("// Put your Javascript here")
+  const [html, setHTML] = useState(defaultHTML)
+  const [css, setCSS] = useState(defaultCSS)
+  const [js, setJS] = useState(defaultJS)
 
   const onOpenFile = (fileType) => {
     setCurrentFile(files[fileType])
@@ -41,13 +42,12 @@ function App() {
     }
   }
 
-  const getGeneratedHTML = () => `
-    <!DOCTYPE html>
+  const getGeneratedHTML = () => `<!DOCTYPE html>
     <html lang="en">
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Test</title>
+      <title>Codeando</title>
     </head>
     <style>
       ${css}
@@ -58,8 +58,7 @@ function App() {
       ${js}
     </script>
     </body>
-    </html>
-    `
+    </html>`
 
   return (
     <>

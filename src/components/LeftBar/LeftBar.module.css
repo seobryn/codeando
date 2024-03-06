@@ -13,7 +13,7 @@
 
     display: flex;
     align-items: center;
-    padding: 0 1rem;
+    padding-inline: 2rem;
     font-size: 18px;
 
     cursor: pointer;
