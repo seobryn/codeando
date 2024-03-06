@@ -67,7 +67,7 @@ function App() {
       <div className={styles.container}>
         <LeftBar selectedFile={currentFile} openFile={onOpenFile} />
         <Editor
-          height="100vh"
+          height="100%"
           width="100%"
           language={currentFile}
           theme="vs-dark"
