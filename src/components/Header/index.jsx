@@ -10,11 +10,11 @@ export function Header({ onShare }) {
           className={styles.logo}
           alt="Logo de Codeando"
         />
-        <h3>Project</h3>
+        <h3>Proyecto</h3>
       </a>
       <div className={styles["btn-bar"]}>
         <button onClick={onShare}>
-          Share{" "}
+          Compartir{" "}
           <img
             className={styles.icon}
             src="/share-icon.svg"
