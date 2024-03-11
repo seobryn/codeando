@@ -4,10 +4,11 @@ import { LeftBar } from "./components/LeftBar"
 import { useState } from "react"
 import { Header } from "./components/Header"
 import { Preview } from "./components/Preview"
-import { defaultCSS, defaultHTML, defaultJS } from "./constants"
+import { ESMSH_URL, defaultCSS, defaultHTML, defaultJS } from "./constants"
 import { DonationCompleted } from "./components/DonationCompleted"
 import { useEffect } from "react"
 import { useRef } from "react"
+import { cleanStringForImport } from "./utils/strings"
 
 const files = {
   javascript: "javascript",
@@ -46,14 +47,13 @@ function App() {
     if (params.size !== 0) {
       history.replaceState({}, document.title, location.origin)
     }
-
   }, [])
 
   const onShare = () => {
     const data = {
       js,
       css,
-      html
+      html,
     }
     const urlData = btoa(encodeURIComponent(JSON.stringify(data)))
     navigator.clipboard.writeText(`https://codeando.link?i=${urlData}`)
@@ -66,6 +66,12 @@ function App() {
 
   const onOpenFile = (fileType) => {
     setCurrentFile(files[fileType])
+  }
+
+  const onAddPackage = (pkg) => {
+    const importString = `import ${cleanStringForImport(pkg.name)} from '${ESMSH_URL}/${pkg.name}@${pkg.version}'`
+    setJS(`${importString}
+${js}`)
   }
 
   const onChangeValue = (evt) => {
@@ -110,7 +116,11 @@ function App() {
     <>
       <Header onShare={onShare} />
       <div className={styles.container}>
-        <LeftBar selectedFile={currentFile} openFile={onOpenFile} />
+        <LeftBar
+          selectedFile={currentFile}
+          openFile={onOpenFile}
+          onAddPackage={onAddPackage}
+        />
         <Editor
           height="100%"
           width="100%"

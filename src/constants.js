@@ -33,3 +33,5 @@ document.querySelector(".btn-example")
 export const defaultHTML = `<h1>Hola! 🤝 disfruta <span class="codeando">Codeando</span></h1>
 <button class="btn-example">Click Aqui</button>
 `
+
+export const ESMSH_URL = "https://esm.sh"
