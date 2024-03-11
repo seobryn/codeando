@@ -12,6 +12,7 @@ export function ActionBar({ onSetView, currentView }) {
       {BtnList.map((view, idx) => (
         <button
           key={`option-btn_${idx}`}
+          title={view.title}
           className={[
             styles["option-btn"],
             currentView === view.viewName ? styles.selected : "",
