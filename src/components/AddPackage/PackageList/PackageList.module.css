@@ -1,0 +1,49 @@
+.list {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 1rem;
+
+    overflow-y: scroll;
+
+    /* IE and Edge */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+}
+
+.list::-webkit-scrollbar {
+    display: none;
+}
+
+.empty {
+    font-size: 12px;
+    font-weight: bold;
+
+    color: #f0f0f066;
+    display: inline-block;
+    text-align: center;
+}
+
+.list .list-item {
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+
+    &:hover {
+        background-color: #474747;
+        cursor: pointer;
+    }
+}
+
+.list .list-item .name {
+    display: block;
+    font-size: 14px;
+    text-wrap: balance;
+}
+
+.list .list-item .version {
+    display: block;
+    font-size: 10px;
+}
