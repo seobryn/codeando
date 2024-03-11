@@ -26,3 +26,30 @@
     width: 40px;
     filter: invert(1);
 }
+
+.btn-bar {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-bar button  {
+    height: 30px;
+    background-color: #f0f0f0;
+    
+    border: 0;
+    border-radius:  4px;
+    
+    padding-inline: 1rem;
+
+    font-size: 16px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-bar button .icon {
+    width: 16px;
+    height: 16px;
+}

@@ -7,6 +7,7 @@ import { Preview } from "./components/Preview"
 import { defaultCSS, defaultHTML, defaultJS } from "./constants"
 import { DonationCompleted } from "./components/DonationCompleted"
 import { useEffect } from "react"
+import { useRef } from "react"
 
 const files = {
   javascript: "javascript",
@@ -20,23 +21,44 @@ function App() {
   const [css, setCSS] = useState(defaultCSS)
   const [js, setJS] = useState(defaultJS)
 
+  const importedProject = useRef(false)
+
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const donationStatus = params.get("donation")
+
     if (donationStatus === "completed") {
       setIsModalOpen(true)
-      params.delete("donation")
-      history.replaceState(
-        {},
-        document.title,
-        `${location.origin}${params.size !== 0 ? "?" + params.toString() : ""}`.trimEnd(),
-      )
-    } else if (donationStatus) {
+    }
+
+    const importProject = params.get("i")
+    if (importProject && !importedProject.current) {
+      const data = JSON.parse(decodeURIComponent(atob(importProject)))
+      setJS(data.js)
+      setCSS(data.css)
+      setHTML(data.html)
+      importedProject.current = true
+      alert("Proyecto importado correctamente!")
+    }
+
+    if (params.size !== 0) {
       history.replaceState({}, document.title, location.origin)
     }
+
   }, [])
+
+  const onShare = () => {
+    const data = {
+      js,
+      css,
+      html
+    }
+    const urlData = btoa(encodeURIComponent(JSON.stringify(data)))
+    navigator.clipboard.writeText(`https://codeando.link?i=${urlData}`)
+    alert("Enlace copiado en el clipboard")
+  }
 
   const onCloseModal = () => {
     setIsModalOpen(false)
@@ -86,7 +108,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header onShare={onShare} />
       <div className={styles.container}>
         <LeftBar selectedFile={currentFile} openFile={onOpenFile} />
         <Editor
