@@ -20,7 +20,7 @@ export function AddPackage({ onAddPackage }) {
       <form className={styles.form}>
         <input
           type="text"
-          placeholder="find npm package"
+          placeholder="Busca un paquete npm"
           onInput={debounce((evt) => onInput(evt))}
         />
       </form>
