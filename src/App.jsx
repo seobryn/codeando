@@ -100,7 +100,7 @@ function App() {
     </style>
     <body>
       ${html}
-    <script>
+    <script type="module">
       ${js}
     </script>
     </body>
