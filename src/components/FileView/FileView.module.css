@@ -1,0 +1,34 @@
+.file {
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+
+    padding-inline: 1rem;
+    font-size: 18px;
+    gap: .5rem;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: #ffffff24;
+    }
+}
+
+.selected-file {
+    font-weight: bold;
+}
+
+.folder {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    margin-top: .4rem;
+}
