@@ -9,6 +9,7 @@ import { DonationCompleted } from "./components/DonationCompleted"
 import { useEffect } from "react"
 import { useRef } from "react"
 import { cleanStringForImport } from "./utils/strings"
+import { debounce } from "./utils/debounce"
 
 const files = {
   javascript: "javascript",
@@ -134,7 +135,7 @@ ${js}`)
               enabled: false,
             },
           }}
-          onChange={onChangeValue}
+          onChange={debounce(onChangeValue, 300)}
         />
         <Preview content={getGeneratedHTML()} />
         {isModalOpen && <DonationCompleted onCloseModal={onCloseModal} />}
