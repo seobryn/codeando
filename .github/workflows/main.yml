@@ -44,6 +44,12 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v4
 
+      - name: Sanitize build output
+        run: |
+          find ./dist -type l -exec rm {} \;
+          find ./dist -type f -links +1 -exec cp --remove-destination {} {}.copy \; -exec mv {}.copy {} \;
+          du -sh ./dist
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
