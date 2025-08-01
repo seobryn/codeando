@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: ./dist # Asegúrate que tu build genera la carpeta 'dist'
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         id: deployment
