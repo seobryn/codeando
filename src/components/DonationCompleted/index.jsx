@@ -5,7 +5,7 @@ export function DonationCompleted({ onCloseModal }) {
     <section className={styles["dc-container"]}>
       <article className={styles["dc-frame"]}>
         <h2 className={styles.heading}>¡Hemos recibido tu donación!</h2>
-        <img src="/thanks.webp" />
+        <img src="/codeando/thanks.webp" />
         <p>
           Con tu donación agradeces el esfuerzo que hemos puesto para que
           disfrutes <b>Codeando</b>

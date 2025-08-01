@@ -1,4 +1,4 @@
-name: Deploy React App to GitHub Pages
+name: Deploy Vite App to GitHub Pages
 
 on:
   push:
@@ -41,19 +41,12 @@ jobs:
       - name: Build project
         run: pnpm run build
 
-      - name: Sanitize build output
-        run: |
-          find ./dist -type l -exec rm {} \;
-          find ./dist -type f -links +1 -exec cp --remove-destination {} {}.copy \; -exec mv {}.copy {} \;
-          du -sh ./dist
-
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v4
 
       - name: Upload build artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
           path: ./dist
 
       - name: Deploy to GitHub Pages

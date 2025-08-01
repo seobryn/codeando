@@ -4,9 +4,9 @@ import styles from "./header.module.css"
 export function Header({ onShare }) {
   return (
     <header className={styles.header}>
-      <a href="/">
+      <a href="/codeando">
         <img
-          src="/codeando.svg"
+          src="/codeando/codeando.svg"
           className={styles.logo}
           alt="Logo de Codeando"
         />
@@ -17,7 +17,7 @@ export function Header({ onShare }) {
           Compartir{" "}
           <img
             className={styles.icon}
-            src="/share-icon.svg"
+            src="/codeando/share-icon.svg"
             alt="Compartir Proyecto"
           />
         </button>

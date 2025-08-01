@@ -57,7 +57,7 @@ function App() {
       html,
     }
     const urlData = btoa(encodeURIComponent(JSON.stringify(data)))
-    navigator.clipboard.writeText(`https://codeando.link?i=${urlData}`)
+    navigator.clipboard.writeText(`https://seobryn.github.io/codeando/?i=${urlData}`)
     alert("Enlace copiado en el clipboard")
   }
 

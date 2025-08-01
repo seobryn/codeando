@@ -1,11 +1,11 @@
 export const BtnList = [
   {
-    image: "/File.svg",
+    image: "/codeando/File.svg",
     viewName: "fileView",
     title: "Archivos",
   },
   {
-    image: "/Package.svg",
+    image: "/codeando/Package.svg",
     viewName: "addPackage",
     title: "Agregar Paquete NPM",
   },

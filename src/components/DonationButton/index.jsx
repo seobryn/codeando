@@ -14,7 +14,7 @@ export function DonationButton() {
           backgroundColor: "transparent",
           width: 150,
           height: 45,
-          backgroundImage: "url(/DonationButton.svg)",
+          backgroundImage: "url(/codeando/DonationButton.svg)",
           backgroundSize: "100% 100%",
           cursor: "pointer",
         }}
